@@ -567,7 +567,14 @@ class Builder
 
         if ($siblings->count() > 1) {
             foreach ($siblings as $s) {
-                $nb->add($s->title, $s->url());
+				//@AG BEGIN
+				//$nb->add($s->title, $s->url());
+				if($s->link) {
+					$nb->add($s->title, $s->url());
+				} else {
+					$nb->raw($s->title)->attr($s->attributes);
+				}
+				//@AG END
             }
         }
 
