@@ -570,7 +570,11 @@ class Builder
 				//@AG BEGIN
 				//$nb->add($s->title, $s->url());
 				if($s->link) {
-					$nb->add($s->title, $s->url());
+					if($s->active) {
+						$nb->add($s->title, $s->url())->activate();
+					} else {
+						$nb->add($s->title, $s->url());
+					}
 				} else {
 					$nb->raw($s->title)->attr($s->attributes);
 				}
